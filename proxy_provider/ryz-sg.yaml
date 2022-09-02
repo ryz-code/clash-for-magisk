@@ -1,0 +1,30 @@
+proxies:
+  - name:  DigitalOcean
+    server: 104.18.11.39
+    port: 443
+    type: vmess
+    uuid: 241e36b2-6d04-4661-a286-b3b07cd942d5
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: v-1.sshcf.xyz
+    network: ws
+    ws-opts: 
+      path: /vpnstunnel/
+      headers: 
+        Host: v-1.sshcf.xyz
+    udp: true
+  - name:  HE
+    server: 104.18.11.39
+    port: 443
+    type: trojan
+    password: 68ae6550-2ae3-11ed-820d-1239d0255272
+    skip-cert-verify: true
+    sni: sg3-trojan.bonds.id
+    network: ws
+    ws-opts: 
+      path: /howdy
+      headers: 
+        Host: sg3-trojan.bonds.id
+    udp: true
