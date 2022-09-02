@@ -1,0 +1,27 @@
+proxies:
+  - name: ID-HERZA
+    server: 104.18.11.39
+    port: 443
+    type: trojan
+    password: 96111110-2ae1-11ed-a5f6-1239d0255272
+    skip-cert-verify: true
+    sni: idtj-herza.bonds.id
+    network: ws
+    ws-opts: 
+      path: /howdy
+      headers: 
+        Host: idtj-herza.bonds.id
+    udp: true
+  - name: SG-HE
+    server: 104.18.11.39
+    port: 443
+    type: trojan
+    password: 68ae6550-2ae3-11ed-820d-1239d0255272
+    skip-cert-verify: true
+    sni: sg3-trojan.bonds.id
+    network: ws
+    ws-opts: 
+      path: /howdy
+      headers: 
+        Host: sg3-trojan.bonds.id
+    udp: true
