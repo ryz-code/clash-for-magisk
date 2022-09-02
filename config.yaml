@@ -1,0 +1,61 @@
+proxies:
+# dual provider
+proxy-groups:
+  - name: Servers
+    type: select
+    proxies:
+      - ⚪ Main Server
+      - 🔴 Telkomsel
+      - 🔵 XL Axiata
+  - name: ⚪ Main Server
+    type: select
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    use:
+      - "1. Main Server"
+  - name: 🔴 Telkomsel
+    type: load-balance
+    strategy: consistent-hashing
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    use:
+      - "2. Telkomsel"
+  - name: 🔵 XL Axiata
+    type: load-balance
+    strategy: consistent-hashing
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    use:
+      - "3. XL Axiata"
+proxy-providers:
+  "1. Main Server":
+    type: http
+    url: "https://raw.githubusercontent.com/ryz-code/clash-for-magisk/master/proxy_provider/main_server.yaml"
+    interval: 3600
+    path: ./proxy_provider/main_server.yaml
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+  "2. Telkomsel":
+    type: http
+    url: "https://raw.githubusercontent.com/ryz-code/clash-for-magisk/master/proxy_provider/telkomsel.yaml"
+    interval: 3600
+    path: ./proxy_provider/telkomsel.yaml
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+  "3. XL Axiata":
+    type: http
+    url: "https://raw.githubusercontent.com/ryz-code/clash-for-magisk/master/proxy_provider/xl.yaml"
+    interval: 3600
+    path: ./proxy_provider/xl.yaml
+    health-check:
+      enable: true
+      url: http://www.gstatic.com/generate_204
+      interval: 300
+rules:
+  - IP-CIDR,127.0.0.1/32,REJECT,no-resolve
+  - IP-CIDR6,::1/128,REJECT,no-resolve
+  - MATCH,Servers
