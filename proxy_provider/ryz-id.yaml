@@ -1,0 +1,30 @@
+proxies:
+  - name: Biznet
+    server: 104.18.11.39
+    port: 443
+    type: trojan
+    password: d6d378a0-2af1-11ed-a60d-1239d0255272
+    skip-cert-verify: true
+    sni: id5-trojan.bonds.id
+    network: ws
+    ws-opts: 
+      path: /howdy
+      headers: 
+        Host: id5-trojan.bonds.id
+    udp: true
+  - name: Herza
+    server: 104.18.11.39
+    port: 443
+    type: vmess
+    uuid: f4f7252a-7100-48e7-a2e5-b0334e845c06
+    alterId: 0
+    cipher: auto
+    tls: true
+    skip-cert-verify: true
+    servername: id-herza.v2-ray.com
+    network: ws
+    ws-opts: 
+      path: /fastssh/ytfttf/6312543bb407b/
+      headers: 
+        Host: id-herza.v2-ray.com
+    udp: true
